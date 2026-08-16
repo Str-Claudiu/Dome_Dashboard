@@ -1,0 +1,44 @@
+DirectoryIndex index.html domedashboard.html
+
+<IfModule mod_setenvif.c>
+  SetEnvIf Authorization "(.+)" HTTP_AUTHORIZATION=$1
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+  RewriteRule ^$ index.html [L]
+  RewriteRule ^proxy(?:/.*)?$ proxy.php [QSA,L]
+  RewriteRule ^hostless-storage/?$ hostless-storage.php [QSA,L]
+  RewriteRule ^v1(?:/.*)?$ proxy.php [QSA,L]
+  RewriteRule ^api(?:/.*)?$ proxy.php [QSA,L]
+  RewriteRule ^graphql(?:/.*)?$ proxy.php [QSA,L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{HTTP_REFERER} /proxy [NC]
+  RewriteRule ^.*$ proxy.php [QSA,L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{HTTP_COOKIE} __dome_proxy_origin= [NC]
+  RewriteRule ^.*$ proxy.php [QSA,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType text/css .css
+  AddType application/javascript .js
+  AddType image/png .png
+  AddType image/jpeg .jpg .jpeg
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+</IfModule>
