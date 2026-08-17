@@ -92,7 +92,7 @@ body {
   position: relative;
 }
 
-/* â”€â”€ BG CANVAS (animaÈ›ie web3 - deasupra totul, pointer-events none) â”€â”€ */
+/* Background canvas animation; always non-interactive. */
 
 .bg-canvas {
   position: fixed;
@@ -2306,7 +2306,7 @@ input[type="range"] {
   font-weight: 700;
 }
 
-/* â”€â”€ SIDEBAR SCROLLBAR (thin, always visible) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Sidebar scrollbar: thin and always visible. */
 .sidebar {
   scrollbar-width: thin;
   scrollbar-color: rgba(96, 81, 237, 0.35) transparent;
@@ -2402,7 +2402,7 @@ input[type="range"] {
     transform: translateX(0);
   }
 
-  /* Overlay Ã®ntunecat cÃ¢nd meniul e deschis */
+  /* Dark overlay shown while the mobile menu is open. */
   .sidebar-overlay {
     display: none;
     position: fixed;
@@ -2485,7 +2485,7 @@ input[type="range"] {
     display: grid;
   }
 
-  /* Topbar rÄƒmÃ¢ne flex row pe mobile, doar mai compact */
+  /* Keep the topbar in one compact row on mobile. */
   .topbar {
     display: flex;
     flex-wrap: nowrap;
@@ -2509,7 +2509,7 @@ input[type="range"] {
     overflow: hidden;
   }
 
-  /* Ascunde elementele mai puÈ›in importante pe mobile pentru a nu aglomera */
+  /* Hide lower-priority details on mobile to avoid crowding. */
   .topbar-meta,
   .domain-pill {
     display: none;
@@ -2679,6 +2679,8 @@ input[type="range"] {
 .win-btn {
   width: 12px;
   height: 12px;
+  padding: 0;
+  border: 0;
   border-radius: 50%;
   cursor: pointer;
   transition: opacity 0.2s ease, transform 0.15s ease;
