@@ -1,11 +1,15 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import dashboardMarkup from "./dashboard/dashboardMarkup.js";
 import { initializeDashboard } from "./dashboard/initializeDashboard.js";
 
 export default function App() {
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const root = document.getElementById("root");
+    if (!root) return;
+
+    root.innerHTML = dashboardMarkup;
     initializeDashboard();
   }, []);
 
-  return <div dangerouslySetInnerHTML={{ __html: dashboardMarkup }} />;
+  return null;
 }

@@ -123,6 +123,12 @@ body[data-theme="light"] {
     linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
 }
 
+#root {
+  height: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
 /* â”€â”€ BG CANVAS (animaÈ›ie web3 - deasupra totul, pointer-events none) â”€â”€ */
 
 .bg-canvas {
