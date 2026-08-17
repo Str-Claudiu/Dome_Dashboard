@@ -7,10 +7,9 @@ export function initializeDashboard() {
   const TOTAL_SHARES = 31250;
 
   const body = document.body;
-  const themeToggle = document.getElementById("themeToggle");
   const navItems = Array.from(document.querySelectorAll(".nav-item"));
   const counterItems = Array.from(document.querySelectorAll("[data-count]"));
-  const sectionIds = ["overview", "earnings", "portfolio", "advantage", "ecosystem", "beta", "marketplace", "status", "upsell"];
+  const sectionIds = ["overview", "earnings", "portfolio", "advantage", "beta", "marketplace", "status", "upsell"];
 
   const revenueSlider = document.querySelector("[data-estimator-revenue]");
   const growthSlider = document.querySelector("[data-estimator-growth]");
@@ -22,7 +21,7 @@ export function initializeDashboard() {
   const noteLabel = document.querySelector("[data-estimator-note]");
   const chartContainers = Array.from(document.querySelectorAll(".chart-block, .mini-chart"));
 
-  initializeTheme();
+  forceDarkTheme();
   initializeBurgerMenu();
   initializeNavigation();
   initializeCounters();
@@ -31,23 +30,6 @@ export function initializeDashboard() {
   initializeBackgroundMotion();
   initializeEcosystemModals();
   initializeNotificationsDropdown();
-  initializeEcosystemScroll();
-
-  function initializeEcosystemScroll() {
-    const slider = document.getElementById("ecosystemSlider");
-    const leftBtn = document.getElementById("ecoScrollLeft");
-    const rightBtn = document.getElementById("ecoScrollRight");
-
-    if (slider && leftBtn && rightBtn) {
-      leftBtn.addEventListener("click", () => {
-        slider.scrollBy({ left: -300, behavior: "smooth" });
-      });
-
-      rightBtn.addEventListener("click", () => {
-        slider.scrollBy({ left: 300, behavior: "smooth" });
-      });
-    }
-  }
 
   function initializeBurgerMenu() {
     const menuToggle = document.getElementById("menuToggle");
@@ -92,21 +74,9 @@ export function initializeDashboard() {
     });
   }
 
-  function initializeTheme() {
-    const savedTheme = window.localStorage.getItem(THEME_KEY);
-    const preferredLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-    const nextTheme = savedTheme || (preferredLight ? "light" : "dark");
-    applyTheme(nextTheme);
-
-    themeToggle?.addEventListener("click", () => {
-      const next = body.dataset.theme === "light" ? "dark" : "light";
-      applyTheme(next);
-      window.localStorage.setItem(THEME_KEY, next);
-    });
-  }
-
-  function applyTheme(theme) {
-    body.dataset.theme = theme;
+  function forceDarkTheme() {
+    body.dataset.theme = "dark";
+    window.localStorage.removeItem(THEME_KEY);
   }
 
   function initializeNavigation() {
