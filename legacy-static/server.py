@@ -11,9 +11,9 @@ PORT = 8080
 PROXY_TIMEOUT = 8
 DIRECT_ASSET_HOSTS = {'www.str.domains', 'str.domains', 'www.strtalk.net', 'strtalk.net'}
 DRIVE_URL = 'https://drive-dev.aresai.tech/'
-DRIVE_API_KEY = 'sldrv_live_2d690871ec0e_og2CGeL59ExGwJnMY_5JCJ8gHrwtoqiYEfzmLmGlLr8'
-DRIVE_USERNAME = 'test-cla'
-DRIVE_PASSWORD = 'paroladetest!@#$%^&*()'
+DRIVE_API_KEY = os.environ.get('DRIVE_API_KEY', '')
+DRIVE_USERNAME = os.environ.get('DRIVE_USERNAME', '')
+DRIVE_PASSWORD = os.environ.get('DRIVE_PASSWORD', '')
 
 def proxied_url(url):
     return f"/proxy?url={urllib.parse.quote(url, safe='')}"

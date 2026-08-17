@@ -4,7 +4,7 @@ declare(strict_types=1);
 const PROXY_TIMEOUT = 12;
 const DIRECT_ASSET_HOSTS = ['www.str.domains', 'str.domains', 'www.strtalk.net', 'strtalk.net'];
 const PROXY_ORIGIN_COOKIE = '__dome_proxy_origin';
-const DRIVE_API_KEY = 'sldrv_live_2d690871ec0e_og2CGeL59ExGwJnMY_5JCJ8gHrwtoqiYEfzmLmGlLr8';
+const DRIVE_API_KEY = '';// Set on backend environment in production.
 
 if (!function_exists('str_starts_with')) {
     function str_starts_with(string $haystack, string $needle): bool {

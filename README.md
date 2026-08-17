@@ -1,18 +1,44 @@
 # Dome Dashboard
 
-Static/PHP dashboard project prepared as its own repository.
+React/Vite implementation of the STRDOME Owners Dashboard, prepared so a dev
+team can integrate it into IgniteHex or another modern frontend platform.
+
+The previous static/PHP implementation is preserved under `legacy-static/` for
+visual and behavior reference.
 
 ## Run Locally
 
-For the static frontend:
+Install dependencies, then start the Vite dev server:
 
 ```bash
-python3 -m http.server 8080
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:8080`.
+Build the production bundle:
+
+```bash
+npm run build
+```
+
+Preview the production bundle locally:
+
+```bash
+npm run preview
+```
+
+## Integration Notes
+
+- Real API keys and permissions should be connected through the host platform's
+  backend or secret manager, not committed into the frontend repo.
+- `src/services/dashboardApi.js` contains placeholder API methods for owner
+  summary, portfolio, ecosystem access, and wallet session data.
+- The current UI is rendered from the verified dashboard markup and initialized
+  through `src/dashboard/initializeDashboard.js`. This keeps parity with the
+  current live dashboard while giving the team a React/Vite project structure
+  they can progressively split into smaller components.
+- Public assets live in `public/`.
 
 ## Repository
 
-Intended GitHub repository: `SL-Projects/dome-dashboard`.
-
+GitHub repository: `https://github.com/Str-Claudiu/Dome_Dashboard`.

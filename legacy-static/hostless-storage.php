@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 const DRIVE_URL = 'https://drive-dev.aresai.tech/';
-const DRIVE_API_KEY = 'sldrv_live_2d690871ec0e_og2CGeL59ExGwJnMY_5JCJ8gHrwtoqiYEfzmLmGlLr8';
-const DRIVE_USERNAME = 'test-cla';
-const DRIVE_PASSWORD = 'paroladetest!@#$%^&*()';
+const DRIVE_API_KEY = '';// Set on backend environment in production.
+const DRIVE_USERNAME = '';// Set on backend environment in production.
+const DRIVE_PASSWORD = '';// Set on backend environment in production.
 
 function proxied_url(string $url): string {
     return '/proxy?url=' . rawurlencode($url);
